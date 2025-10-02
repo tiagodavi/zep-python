@@ -661,11 +661,11 @@ wheels = [
 
 [[package]]
 name = "packaging"
-version = "23.2"
+version = "25.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/fb/2b/9b9c33ffed44ee921d0967086d653047286054117d584f1b1a7c22ceaf7b/packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5", size = 146714, upload-time = "2023-10-01T13:50:05.279Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f", size = 165727, upload-time = "2025-04-19T11:48:59.673Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ec/1a/610693ac4ee14fcdf2d9bf3c493370e4f2ef7ae2e19217d7a237ff42367d/packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7", size = 53011, upload-time = "2023-10-01T13:50:03.745Z" },
+    { url = "https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484", size = 66469, upload-time = "2025-04-19T11:48:57.875Z" },
 ]
 
 [[package]]
@@ -1407,9 +1407,9 @@ test = [
 
 [package.metadata]
 requires-dist = [
-    { name = "httpx", specifier = ">=0.24.0,<0.25" },
-    { name = "packaging", specifier = "~=23.1" },
-    { name = "pydantic", specifier = ">=1.10.7" },
+    { name = "httpx", specifier = ">=0.24.0,<0.28" },
+    { name = "packaging", specifier = "~=25.0" },
+    { name = "pydantic", specifier = ">=2.10" },
 ]
 
 [package.metadata.requires-dev]
@@ -1427,7 +1427,7 @@ test = [
     { name = "mypy", specifier = ">=1.2.0,<2" },
     { name = "pytest", specifier = ">=7.3.1,<8" },
     { name = "pytest-asyncio", specifier = ">=0.21.0,<0.22" },
-    { name = "pytest-httpx", specifier = ">=0.22.0,<0.23" },
+    { name = "pytest-httpx", specifier = ">=0.22.0,<0.35" },
     { name = "pytest-mock", specifier = ">=3.10.0,<4" },
     { name = "ruff", specifier = ">=0.0.265,<0.0.266" },
 ]
