@@ -49,7 +49,7 @@ class Message(BaseModel):
         Dict[str, Any]
             A dictionary containing the attributes of the message.
         """
-        return self.dict()
+        return self.model_dump()
 
 
 class UpdateMessageMetadataRequest(BaseModel):

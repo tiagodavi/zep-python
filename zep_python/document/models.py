@@ -60,7 +60,7 @@ class Document(BaseModel):
         Dict[str, Any]
             A dictionary containing the attributes of the document.
         """
-        return self.dict()
+        return self.model_dump()
 
 
 class DocumentCollectionModel(BaseModel):
@@ -120,7 +120,7 @@ class DocumentCollectionModel(BaseModel):
         Dict[str, Any]
             A dictionary containing the attributes of the document collection.
         """
-        return self.dict()
+        return self.model_dump()
 
 
 class DocumentSearchPayload(BaseModel):

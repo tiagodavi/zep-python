@@ -133,7 +133,7 @@ def main(file: str):
     document_to_retrieve = uuids[25]
     print(f"Retrieving document {document_to_retrieve}")
     retrieved_document = collection.get_document(document_to_retrieve)
-    print(retrieved_document.dict())
+    print(retrieved_document.model_dump())
 
     # Update a document's metadata
     print(f"Updating document {document_to_retrieve} metadata")

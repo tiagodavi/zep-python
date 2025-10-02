@@ -74,7 +74,7 @@ def main() -> None:
         print(f"Getting session: {session_id}")
         try:
             session = client.memory.get_session(session_id)
-            print(f"Session details: {session.dict()}")
+            print(f"Session details: {session.model_dump()}")
         except NotFoundError:
             print("Session not found")
 
@@ -97,7 +97,7 @@ def main() -> None:
         try:
             memory = client.memory.get_memory(session_id)
             for message in memory.messages:
-                print(f"Message: {message.dict()}")
+                print(f"Message: {message.model_dump()}")
         except NotFoundError:
             print("Memory not found for Session: " + session_id)
 

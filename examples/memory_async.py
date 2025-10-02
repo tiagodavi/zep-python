@@ -83,7 +83,7 @@ async def main() -> None:
         print(f"Getting session: {session_id}")
         try:
             session = await client.memory.aget_session(session_id)
-            print(f"Session details: {session.dict()}")
+            print(f"Session details: {session.model_dump()}")
         except NotFoundError:
             print("Session not found")
 

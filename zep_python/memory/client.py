@@ -42,14 +42,14 @@ class MemoryClient:
         messages: List[Message]
         try:
             messages = [
-                Message.parse_obj(m) for m in response_data.get("messages", None)
+                Message.model_validate(m) for m in response_data.get("messages", None)
             ]
         except (TypeError, ValueError) as e:
             raise APIError(message="Unexpected response format from the API") from e
 
         summary: Optional[Summary] = None
         if response_data.get("summary", None) is not None:
-            summary = Summary.parse_obj(response_data["summary"])
+            summary = Summary.model_validate(response_data["summary"])
 
         memory = Memory(
             messages=messages,
@@ -106,7 +106,7 @@ class MemoryClient:
 
         response_data = response.json()
 
-        return Session.parse_obj(response_data)
+        return Session.model_validate(response_data)
 
     # Memory APIs : Get a Session Asynchronously
     async def aget_session(self, session_id: str) -> Session:
@@ -148,7 +148,7 @@ class MemoryClient:
 
         response_data = response.json()
 
-        return Session.parse_obj(response_data)
+        return Session.model_validate(response_data)
 
     # Memory APIs : Add a Session
     def add_session(self, session: Session) -> Session:
@@ -188,7 +188,7 @@ class MemoryClient:
 
         handle_response(response, f"Failed to add session {session.session_id}")
 
-        return Session.parse_obj(response.json())
+        return Session.model_validate(response.json())
 
     # Memory APIs : Add a Session Asynchronously
     async def aadd_session(self, session: Session) -> Session:
@@ -230,7 +230,7 @@ class MemoryClient:
 
         handle_response(response, f"Failed to add session {session.session_id}")
 
-        return Session.parse_obj(response.json())
+        return Session.model_validate(response.json())
 
     # Memory APIs : Update a Session
     def update_session(self, session: Session) -> Session:
@@ -268,7 +268,7 @@ class MemoryClient:
 
         handle_response(response, f"Failed to update session {session.session_id}")
 
-        return Session.parse_obj(response.json())
+        return Session.model_validate(response.json())
 
     # Memory APIs : Update a Session Asynchronously
     async def aupdate_session(self, session: Session) -> Session:
@@ -306,7 +306,7 @@ class MemoryClient:
 
         handle_response(response, f"Failed to update session {session.session_id}")
 
-        return Session.parse_obj(response.json())
+        return Session.model_validate(response.json())
 
     # Memory APIs : Get a List of Sessions
     def list_sessions(
@@ -350,7 +350,7 @@ class MemoryClient:
 
         response_data = response.json()
 
-        return [Session.parse_obj(session) for session in response_data]
+        return [Session.model_validate(session) for session in response_data]
 
     # Memory APIs : Get a List of Sessions Asynchronously
     async def alist_sessions(
@@ -392,7 +392,7 @@ class MemoryClient:
 
         response_data = response.json()
 
-        return [Session.parse_obj(session) for session in response_data]
+        return [Session.model_validate(session) for session in response_data]
 
     def list_all_sessions(
         self, chunk_size: int = 100
@@ -724,7 +724,7 @@ class MemoryClient:
         params = {"limit": limit} if limit is not None else {}
         response = self.client.post(
             f"/sessions/{session_id}/search",
-            json=search_payload.dict(),
+            json=search_payload.model_dump(),
             params=params,
         )
         handle_response(response)
@@ -778,7 +778,7 @@ class MemoryClient:
         params = {"limit": limit} if limit is not None else {}
         response = await self.aclient.post(
             f"/sessions/{session_id}/search",
-            json=search_payload.dict(),
+            json=search_payload.model_dump(),
             params=params,
         )
         handle_response(response)

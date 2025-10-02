@@ -91,7 +91,7 @@ class Summary(BaseModel):
         Dict[str, Any]
             A dictionary containing the attributes of the summary.
         """
-        return self.dict()
+        return self.model_dump()
 
 
 class Memory(BaseModel):
@@ -129,7 +129,7 @@ class Memory(BaseModel):
     token_count: Optional[int] = Field(optional=True, default=None)
 
     def to_dict(self) -> Dict[str, Any]:
-        return self.dict()
+        return self.model_dump()
 
 
 class MemorySearchPayload(BaseModel):
