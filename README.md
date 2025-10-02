@@ -11,3 +11,8 @@ Zep is an open source platform for productionizing LLM apps. Zep summarizes, emb
 ```bash
 pip install git+git@github.com:tiagodavi/zep-python.git
 ```
+
+## Use in requirements.txt
+```
+zep-python @ git+https://github.com/tiagodavi/zep-python.git@main
+```
