@@ -1,15 +1,6 @@
 from typing import TYPE_CHECKING, Any, Dict, Optional
 from uuid import UUID
-
-if TYPE_CHECKING:
-    from pydantic import BaseModel, Field
-else:
-    try:
-        from pydantic.v1 import BaseModel, Field
-    except ImportError:
-        from pydantic import BaseModel, Field
-
-
+from pydantic import BaseModel, Field
 class Message(BaseModel):
     """
     Represents a message in a conversation.

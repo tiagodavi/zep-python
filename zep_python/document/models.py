@@ -2,17 +2,8 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
-
 from ..utils import SearchType
-
-if TYPE_CHECKING:
-    from pydantic import BaseModel, Extra, Field
-else:
-    try:
-        from pydantic.v1 import BaseModel, Extra, Field
-    except ImportError:
-        from pydantic import BaseModel, Extra, Field
-
+from pydantic import BaseModel, ConfigDict, Field
 
 class Document(BaseModel):
     """
@@ -97,7 +88,7 @@ class DocumentCollectionModel(BaseModel):
         ...,
         min_length=5,
         max_length=40,
-        regex="^[a-zA-Z0-9_-]*$",
+        pattern="^[a-zA-Z0-9_-]*$",
     )
     description: Optional[str] = Field(default=None, max_length=1000)
     metadata: Optional[Dict[str, Any]] = Field(default_factory=dict)
@@ -108,8 +99,7 @@ class DocumentCollectionModel(BaseModel):
     document_embedded_count: Optional[int] = None
     is_normalized: Optional[bool] = None
 
-    class Config:
-        extra = Extra.forbid
+    model_config = ConfigDict(extra="forbid")
 
     def to_dict(self) -> Dict[str, Any]:
         """

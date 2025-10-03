@@ -3,15 +3,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from zep_python.message.models import Message
-
-if TYPE_CHECKING:
-    from pydantic import BaseModel, Field
-else:
-    try:
-        from pydantic.v1 import BaseModel, Field
-    except ImportError:
-        from pydantic import BaseModel, Field
-
+from pydantic import BaseModel, Field
 
 class SearchScope(str, Enum):
     messages = "messages"
